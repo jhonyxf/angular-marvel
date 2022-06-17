@@ -1,6 +1,7 @@
 # AngularMarvel
 
 É necessário gerar a chave pública e o hash no portal da Marvel e substituir no arquivo personagens-api.service.ts
+
 PUBLIC_KEY = 'sua-chave-publica';
 HASH = 'seu-hash';
 

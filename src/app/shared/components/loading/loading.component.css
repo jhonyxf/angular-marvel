@@ -1,0 +1,19 @@
+.container{
+    display: flex;
+    align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.container h1{
+    color: white;
+}
+
+
+img {
+    height: 400px;
+    width: 400px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    object-fit: cover;
+}

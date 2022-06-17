@@ -1,0 +1,61 @@
+<form class="example-form" [formGroup]="pesquisaForm" (ngSubmit)="onSubmit()">
+  <table class="example-full-width" cellspacing="0"><tr>
+    <td><mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Digite o nome do personagem...</mat-label>
+      <input id="personagem" matInput type="text" formControlName="personagem" (keyup)="changeFn($event)">
+    </mat-form-field></td>
+    <td><button type="submit" mat-raised-button color="primary">Pesquisar</button></td>
+  </tr></table>
+
+</form>
+
+<div class="container" *ngIf="personagens">
+  
+  <mat-card class="example-card" *ngFor="let personagem of personagens | async">
+    
+    <mat-card-header>
+      <div mat-card-avatar><img  class="card-avatar" src={{personagem.thumbnail.path}}.{{personagem.thumbnail.extension}} /></div>
+      <mat-card-title>{{personagem.name}}</mat-card-title>
+    </mat-card-header>
+    <img mat-card-image src="{{personagem.thumbnail.path}}.{{personagem.thumbnail.extension}}" alt="Photo of a Shiba Inu">
+    <mat-card-content>
+      <p style="min-height: 160px;" *ngIf="personagem.description; else semDescricao">
+        {{personagem.description}}
+      </p>
+      <ng-template #semDescricao>
+        <p style="min-height: 160px;">
+          Não existe a descrição do personagem na API da Marvel
+        </p>
+        </ng-template>
+
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button>LIKE</button>
+      <button mat-button>SHARE</button>
+    </mat-card-actions>
+  </mat-card>
+  </div>
+  <div class="container"  *ngIf="!personagens">
+  <mat-card class="example-card" *ngFor="let personagem of allPersonagens | async">
+    <mat-card-header>
+      <div mat-card-avatar><img  class="card-avatar" src={{personagem.thumbnail.path}}.{{personagem.thumbnail.extension}} /></div>
+      <mat-card-title>{{personagem.name}}</mat-card-title>
+    </mat-card-header>
+    <img mat-card-image src="{{personagem.thumbnail.path}}.{{personagem.thumbnail.extension}}" alt="Photo of a Shiba Inu">
+    <mat-card-content>
+      <p style="min-height: 160px;" *ngIf="personagem.description; else semDescricao">
+        {{personagem.description}}
+      </p>
+      <ng-template #semDescricao>
+        <p style="min-height: 160px;">
+          Não existe a descrição do personagem na API da Marvel
+        </p>
+        </ng-template>
+
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button>LIKE</button>
+      <button mat-button>SHARE</button>
+    </mat-card-actions>
+  </mat-card>
+  </div>
